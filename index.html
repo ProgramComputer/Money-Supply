@@ -71,7 +71,7 @@
         height = 500 - margin.top - margin.bottom;
 
     var parseDate = d3.time.format("%Y/%m/%e").parse,
-        bisectDate = d3.bisector(function(d) { return d.DATE; }).left,
+        bisectDate = d3.bisector(function(d) { return d.date; }).left,
         formatValue = d3.format(","),
         dateFormatter = d3.time.format("%y/%d/%m");
 
@@ -92,8 +92,8 @@
         .tickFormat(d3.format("s"))
 
     var line = d3.svg.line()
-        .x(function(d) { return x(d.DATE); })
-        .y(function(d) { return y(d.M1NS_WSAVNS); });
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.level); });
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -109,8 +109,8 @@
         if (error) throw error;
 
         data.forEach(function(d) {
-            d.DATE = parseDate(d.DATE);
-            d.M1NS_WSAVNS = +d.M1NS_WSAVNS;
+            d.date = parseDate(d.DATE);
+            d.level = +d.M1NS_WSAVNS;
         });
 
         data.sort(function(a, b) {
@@ -118,7 +118,7 @@
         });
 
         x.domain([data[0].date, data[data.length - 1].date]);
-        y.domain(d3.extent(data, function(d) { return d.M1NS_WSAVNS; }));
+        y.domain(d3.extent(data, function(d) { return d.level; }));
 
         svg.append("g")
             .attr("class", "x axis")
@@ -133,7 +133,7 @@
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text("Number of Likes");
+            .text("Supply");
 
         svg.append("path")
             .datum(data)
@@ -172,10 +172,10 @@
                 d0 = data[i - 1],
                 d1 = data[i],
                 d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-            focus.attr("transform", "translate(" + x(d.DATE) + "," + y(d.M1NS_WSAVNS) + ")");
-            tooltip.attr("style", "left:" + (x(d.DATE) + 64) + "px;top:" + y(d.M1NS_WSAVNS) + "px;");
-            tooltip.select(".tooltip-date").text(dateFormatter(d.DATE));
-            tooltip.select(".tooltip-likes").text(formatValue(d.M1NS_WSAVNS));
+            focus.attr("transform", "translate(" + x(d.date) + "," + y(d.level) + ")");
+            tooltip.attr("style", "left:" + (x(d.date) + 64) + "px;top:" + y(d.level) + "px;");
+            tooltip.select(".tooltip-date").text(dateFormatter(d.date));
+            tooltip.select(".tooltip-likes").text(formatValue(d.level));
         }
     });
   
