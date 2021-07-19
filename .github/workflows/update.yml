@@ -17,7 +17,7 @@ jobs:
         run: |
          shopt -s globstar
          cp M1NS_WSAVNS.csv M1NS_WSAVNS_COMPLETE.csv
-         curl https://api.stlouisfed.org/fred/series/observations?series_id=M1NS&api_key="'"$API_KEY"'"&file_type=txt -o M1NS.tsv
+         wget https://api.stlouisfed.org/fred/series/observations?series_id=M1NS&api_key="'"$API_KEY"'"&file_type=txt
          awk 'BEGIN { FS="\t"; OFS="," } {
           rebuilt=0
            for(i=1; i<=NF; ++i) {
