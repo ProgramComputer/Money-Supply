@@ -17,7 +17,7 @@ jobs:
         run: |
          shopt -s globstar
          cp M1NS_WSAVNS.csv M1NS_WSAVNS_COMPLETE.csv
-         curl -X POST https://api.stlouisfed.org/fred/series/observations -H "Content-Type: application/json" -d '{ "series_id":"M1NS", "api_key":\"API_KEY\", "file_type":"txt"}' -o M1NS.tsv
+         curl https://api.stlouisfed.org/fred/series/observations?series_id=M1NS&api_key'"${API_KEY}"'&file_type=txt -o M1NS.tsv
          awk 'BEGIN { FS="\t"; OFS="," } {
           rebuilt=0
            for(i=1; i<=NF; ++i) {
