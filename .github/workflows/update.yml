@@ -17,7 +17,7 @@ jobs:
         run: |
          shopt -s globstar
          cp M1NS_WSAVNS.csv M1NS_WSAVNS_COMPLETE.csv
-         echo API_KEY
+         echo $API_KEY
          curl https://api.stlouisfed.org/fred/series/observations?series_id=M1NS&api_key=$API_KEY&file_type=txt -o M1NS.tsv
          awk 'BEGIN { FS="\t"; OFS="," } {
           rebuilt=0
@@ -40,7 +40,7 @@ jobs:
             rm -rf M1NS.csv
             rm -rf M1NS.tsv
         env:
-          API_KEY: ${{ secrets.API_KEY }} # if run.py requires passwords..etc, set it as secrets
+          API_KEY: ${{ secrets.ApiKey }} # if run.py requires passwords..etc, set it as secrets
       - name: Commit files # transfer the new html files back into the repository
         run: |
          git config --local user.name "Update"
