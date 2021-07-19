@@ -109,8 +109,8 @@
         if (error) throw error;
 
         data.forEach(function(d) {
-            d.date = parseDate(d.DATE);
-            d.level = +d.M1NS_WSAVNS;
+            d.date = parseDate(d.date);
+            d.level = +d.level;
         });
 
         data.sort(function(a, b) {
