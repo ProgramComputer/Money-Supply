@@ -85,6 +85,7 @@
          .tooltip-date,
          .tooltip-likes {
           font-weight: bold;
+          font: 20px "Lucida Sans", Lucida,verdana,arial,sans-serif;
         }
   
 
@@ -95,8 +96,8 @@
   
     <script>
          var margin = { top: 30, right: 132, bottom: 30, left: 50 },
-      width = 1000 - margin.left - margin.right,
-      height = 1000 - margin.top - margin.bottom;
+      width = 700 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
 
     var parseDate = d3.time.format("%Y-%m-%e").parse,
       bisectDate = d3.bisector(function (d) {
@@ -195,7 +196,7 @@
       tooltipLikes
         .append("span")
         .attr("class", "tooltip-title")
-        .text("Billions of dollars ");
+        
 
       var tooltipLikesValue = tooltipLikes
         .append("span")
@@ -232,7 +233,7 @@
         );
         tooltip.select(".tooltip-date").text(dateFormatter(d.date));
 
-        tooltip.select(".tooltip-likes").text(formatValue(d.level));
+        tooltip.select(".tooltip-likes").text(formatValue(d.level) + " billions of dollars");
       }
     });
     </script>
