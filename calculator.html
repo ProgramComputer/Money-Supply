@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <title>Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link Home" aria-current="page" href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link M1 Graph" href="Graph">Graph</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link Calculator" href="calculator.html">Calculator</a>
+      </li>
+      
+      </li>
+    </ul>
+  <div align="center" id="Calculator">
+    <div style="width: 100%; margin: 5px;">
+      <section class="">
+        <table class="smallBox" onkeydown="javascript:navigate(event);">
+          <tbody>
+            <tr style="height: 17pt;">
+              <td colspan="6" style="height: 17pt;">
+                <h1 align="center" style="margin-top: 10px;">
+                  <font color="#2255AA"
+                    ><strong>Monetary Inflation Calculator</strong></font
+                  >
+                </h1>
+              </td>
+            </tr>
+            <tr style="height: 22pt;">
+              <td class="ee111" style="height: 22pt;">&nbsp;</td>
+              <td class="ee112" style="height: 22pt;">
+                If in
+              </td>
+              <td class="ee115" style="height: 22pt;">
+                <input
+                  id="yearb"
+                  type="text"
+                  value="1971"
+                  class="ee117"
+                  style="
+                    border: 1px solid #2255aa;
+                    width: 80%;
+                    padding-right: 1px;
+                  "
+                  onchange="this.value=eedisplayFloat(eeparseFloat(this.value));recalc_onclick('yearb')"
+                  name="yearb"
+                  placeholder=""
+                  tabindex="1"
+               
+                />
+              </td>
+              <td class="ee112" style="height: 22pt;" colspan="2">
+                (enter year)
+              </td>
+              <td class="ee118" style="height: 22pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 22pt;">
+              <td class="ee111" style="height: 22pt;">&nbsp;</td>
+              <td class="ee112" style="height: 22pt;" colspan="2">
+                I purchased an item for $
+              </td>
+              <td class="ee112" style="height: 22pt;">&nbsp;</td>
+              <td class="ee115" style="height: 22pt;">
+                <input
+                  id="dollars"
+                  type="text"
+                  value="1.00"
+                  class="ee117"
+                  style="
+                    border: 1px solid #2255aa;
+                    width: 80%;
+                    padding-right: 1px;
+                  "
+                  onchange="this.value=eedisplayFloatNDTh(eeparseFloatTh(this.value),2);recalc_onclick('dollars')"
+                  name="dollars"
+                  placeholder=""
+                  tabindex="2"
+                />
+              </td>
+              <td class="ee118" style="height: 22pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 22pt;">
+              <td class="ee111" style="height: 22pt;">&nbsp;</td>
+              <td class="ee112" style="height: 22pt;">
+                then in
+              </td>
+              <td class="ee115" style="height: 22pt;">
+                <input
+                  id="yeara"
+                  type="text"
+                  value="2021"
+                  class="ee117"
+                  style="
+                    border: 1px solid #2255aa;
+                    width: 80%;
+                    padding-right: 1px;
+                  "
+                  onchange="this.value=eedisplayFloat(eeparseFloat(this.value));recalc_onclick('yeara')"
+                  name="yeara"
+                  placeholder=""
+                  tabindex="3"
+                 
+                />
+              </td>
+              <td class="ee122" style="height: 22pt;" colspan="2">
+                (enter year)
+              </td>
+              <td class="ee118" style="height: 22pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 22pt;">
+              <td class="ee111" style="height: 22pt;">&nbsp;</td>
+              <td class="ee122" style="height: 22pt;" colspan="3">
+                that same
+                <font class="ee125"><strong>item would cost</strong></font
+                ><font class="ee126">:</font>
+              </td>
+              <td class="ee127" style="height: 22pt;">
+                <input
+                  id="cost"
+                  type="text"
+                  readonly="readonly"
+                  value="-"
+                  class="style51"
+                  style="
+                    overflow: hidden;
+                    border: 0px solid rgb(0, 0, 0);
+                    width: 100%;
+                    background: transparent;
+                  "
+                  name="cost"
+                  tabindex="-1"
+                />
+              </td>
+              <td class="ee118" style="height: 22pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 22pt;">
+              <td class="ee111" style="height: 22pt;">&nbsp;</td>
+              <td class="ee122" style="height: 22pt;" colspan="3">
+                Cumulative rate of inflation:
+              </td>
+              <td class="ee127" style="height: 22pt;">
+                <input
+                  id="cumulative"
+                  type="text"
+                  readonly="readonly"
+                  value="0"
+                  class="style51"
+                  style="
+                    overflow: hidden;
+                    border: 0px solid rgb(0, 0, 0);
+                    width: 100%;
+                    background: transparent;
+                  "
+                  name="cumulative"
+                  tabindex="-1"
+                />
+              </td>
+              <td class="ee118" style="height: 22pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 20pt;">
+              <td class="ee111" style="height: 20pt;">&nbsp;</td>
+              <td class="ee130" style="height: 20pt;" colspan="4">
+                <div class="btn btn-primary btn-xs">
+                  <input
+                    type="button"
+                    onclick='recalc_onclick("")'
+                    class="ee130 btn-primary"
+                    style="
+                      border: 0px solid rgb(0, 0, 0);
+                      color: rgb(255, 255, 255);
+                      height: 35px;
+                      font-size: inherit;
+                    "
+                    value="Calculate"
+                  />
+                </div>
+              </td>
+              <td class="ee118" style="height: 20pt;">&nbsp;</td>
+            </tr>
+            <tr style="height: 8pt;">
+              <td class="ee131" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+              <td class="ee132" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+              <td class="ee132" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+              <td class="ee132" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+              <td class="ee132" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+              <td class="ee133" style="height: 8pt;">
+                <div style="overflow: hidden;"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</html>
